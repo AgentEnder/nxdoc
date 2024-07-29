@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "executors": {
+    "generate-docs": {
+      "implementation": "./src/executors/generate-docs/executor",
+      "schema": "./src/executors/generate-docs/schema.json",
+      "description": "Executor for generating documentation for a single project."
+    },
+    "generate-index": {
+      "implementation": "./src/executors/generate-index/executor",
+      "schema": "./src/executors/generate-index/schema.json",
+      "description": "Executor for generating an index that ties multiple projects together."
+    }
+  }
+}

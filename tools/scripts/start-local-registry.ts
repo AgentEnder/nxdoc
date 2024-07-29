@@ -8,18 +8,22 @@ import { releasePublish, releaseVersion } from 'nx/release';
 
 export default async () => {
   // local registry target to run
-  const localRegistryTarget = 'nx-github-pages:local-registry';
+  const localRegistryTarget = 'nxdoc:local-registry';
   // storage folder for the local registry
   const storage = './tmp/local-registry/storage';
+
+  const verbose =
+    process.env.NX_VERBOSE_LOGGING === 'true' ||
+    process.argv.includes('--verbose');
 
   global.stopLocalRegistry = await startLocalRegistry({
     localRegistryTarget,
     storage,
-    verbose: false,
+    verbose,
   });
 
   await releaseVersion({
-    specifier: '0.0.0-e2e',
+    specifier: '0.0.0-e2e.1',
     stageChanges: false,
     gitCommit: false,
     gitTag: false,
@@ -27,6 +31,7 @@ export default async () => {
     generatorOptionsOverrides: {
       skipLockFileUpdate: true,
     },
+    verbose,
   });
   await releasePublish({
     tag: 'e2e',

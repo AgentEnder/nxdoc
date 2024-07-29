@@ -15,6 +15,11 @@
     "sharedGlobals": []
   },
   "targetDefaults": {
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectName}"
+      }
+    },
     "@nx/js:tsc": {
       "cache": true,
       "dependsOn": ["^build"],
@@ -45,7 +50,19 @@
   },
   "release": {
     "version": {
-      "preVersionCommand": "npx nx run-many -t build"
+      "conventionalCommits": true,
+      "preVersionCommand": "nx run-many --target=build",
+      "generatorOptions": {
+        "packageRoot": "dist/{projectName}"
+      }
+    },
+    "changelog": {
+      "workspaceChangelog": {
+        "createRelease": "github"
+      }
+    },
+    "git": {
+      "commitMessage": "chore(release): release {version} [skip ci]"
     }
   }
 }

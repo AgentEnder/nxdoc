@@ -14,7 +14,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "nx-github-pages": ["src/index.ts"]
+      "nxdoc": ["src/index.ts"]
     }
   },
   "files": [],

@@ -1,0 +1,42 @@
+{
+  "id": "nxdoc:generate-docs",
+  "title": "Generate Docs Generator",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The project that docs should be generated for.",
+      "$default": {
+        "$source": "projectName"
+      },
+      "x-dropdown": "projects",
+      "x-prompt": "Which project should docs be generated for?"
+    },
+    "outputDirectory": {
+      "type": "string",
+      "description": "Where should the generated docs be placed?",
+      "default": "docs/{projectName}"
+    },
+    "gettingStartedFile": {
+      "type": "string",
+      "description": "File contents to place before the API reference section for each package. <src> is replaced by the package's root.",
+      "default": "{projectRoot}/README.md"
+    },
+    "root": {
+      "type": "boolean",
+      "description": "If true, the project is assumed to be the \"root\" project of the docs site, and will not be nested under a package directory.",
+      "default": false
+    },
+    "skipFrontMatter": {
+      "type": "boolean",
+      "description": "NxDoc generates frontmatter suitable for docusaurus by default.",
+      "default": false
+    },
+    "skipFormat": {
+      "type": "boolean",
+      "description": "Skips running the output through prettier",
+      "default": false
+    }
+  },
+  "required": ["project", "outputDirectory"]
+}

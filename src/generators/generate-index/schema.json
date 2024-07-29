@@ -1,0 +1,27 @@
+{
+  "id": "nxdoc:generate-index",
+  "title": "Generate Index Generator",
+  "type": "object",
+  "properties": {
+    "outputDirectory": {
+      "type": "string",
+      "description": "Where should the generated docs be placed?",
+      "default": "docs"
+    },
+    "exclude": {
+      "type": "string",
+      "description": "Comma separated list of packages to exclude from the generated docs."
+    },
+    "skipFrontMatter": {
+      "type": "boolean",
+      "description": "NxDoc generates frontmatter suitable for docusaurus by default.",
+      "default": false
+    },
+    "skipFormat": {
+      "type": "boolean",
+      "description": "Skips running the output through prettier",
+      "default": false
+    }
+  },
+  "required": ["outputDirectory"]
+}

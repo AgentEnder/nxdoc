@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "nxdoc",
+  "version": "0.0.1",
+  "generators": {
+    "generate-docs": {
+      "factory": "./src/generators/generate-docs/generator",
+      "schema": "./src/generators/generate-docs/schema.json",
+      "description": "Generator for generating documentation for a single project."
+    },
+    "configuration": {
+      "factory": "./src/generators/configuration/generator",
+      "schema": "./src/generators/configuration/schema.json",
+      "description": "Generates a target configuration for generating documentation for a given plugin."
+    },
+    "generate-index": {
+      "factory": "./src/generators/generate-index/generator",
+      "schema": "./src/generators/generate-index/schema.json",
+      "description": "Generator for generating an index that ties multiple projects together."
+    }
+  }
+}
