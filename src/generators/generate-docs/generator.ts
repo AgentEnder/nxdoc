@@ -269,7 +269,7 @@ function getSchemaMarkdown(
     h1(
       `${packageName}:${generatorName}`,
       ...(schema.title ? [h2(schema.title)] : []),
-      escapeHtml(schema.description ?? entry.description)
+      escapeHtml(schema.description ?? entry.description ?? '')
     ),
   ];
 
@@ -286,11 +286,17 @@ function getSchemaMarkdown(
             : name,
           property.oneOf
             ? ul(
-                property.oneOf.map(
-                  (p) => `${p.type}: ${escapeHtml(p.description)}`
+                property.oneOf.map((p) =>
+                  p.description
+                    ? `(${p.type}): ${escapeHtml(p.description)}`
+                    : `(${p.type})`
                 )
               )
-            : ul(`${property.type}: ${escapeHtml(property.description)}`),
+            : ul(
+                property.description
+                  ? `(${property.type}): ${escapeHtml(property.description)}`
+                  : `(${property.type})`
+              ),
           ...(property.default
             ? [`Default: \`${escapeHtml(JSON.stringify(property.default))}\``]
             : [])
