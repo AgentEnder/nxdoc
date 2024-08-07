@@ -270,9 +270,20 @@ function getSchemaMarkdown(
     ),
   ];
 
-  const propertiesEntries = Object.entries(schema.properties ?? {}).filter(
-    ([_, property]) => !property.hidden
-  );
+  const propertiesEntries = Object.entries(schema.properties ?? {})
+    .filter(([_, property]) => !property.hidden)
+    .sort((a, b) => {
+      const aRequired = schema.required?.includes?.(a[0]) ?? false;
+      const bRequired = schema.required?.includes?.(b[0]) ?? false;
+
+      if (aRequired && !bRequired) {
+        return -1;
+      } else if (!aRequired && bRequired) {
+        return 1;
+      } else {
+        return a[0].localeCompare(b[0]);
+      }
+    });
   if (propertiesEntries.length > 0) {
     detailMdLines.push(h2('Options'));
     detailMdLines.push(
