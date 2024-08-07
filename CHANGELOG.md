@@ -1,3 +1,14 @@
+## 0.1.1 (2024-08-07)
+
+
+### 🩹 Fixes
+
+- **core:** enable npm provenance ([9f71c73](https://github.com/agentender/nxdoc/commit/9f71c73))
+
+### ❤️  Thank You
+
+- Craigory Coppola @AgentEnder
+
 ## 0.1.0 (2024-08-07)
 
 
