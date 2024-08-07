@@ -1,3 +1,14 @@
+## 0.2.0 (2024-08-07)
+
+
+### 🚀 Features
+
+- **nxdoc:** allow specifying patterns to exclude and include projects when generating index ([ef0e964](https://github.com/agentender/nxdoc/commit/ef0e964))
+
+### ❤️  Thank You
+
+- Craigory Coppola @AgentEnder
+
 ## 0.1.1 (2024-08-07)
 
 
