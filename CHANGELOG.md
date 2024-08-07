@@ -1,3 +1,14 @@
+## 0.2.2 (2024-08-07)
+
+
+### 🩹 Fixes
+
+- **nxdoc:** avoid error when property description is undefined ([7ef5f7d](https://github.com/agentender/nxdoc/commit/7ef5f7d))
+
+### ❤️  Thank You
+
+- Craigory Coppola @AgentEnder
+
 ## 0.2.1 (2024-08-07)
 
 
