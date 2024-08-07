@@ -148,9 +148,6 @@ function generateDocsForProject(
       frontMatter({
         title: packageName,
         summary: packageName,
-        sidebar_label: 'Getting Started',
-        sidebar_position: 0,
-        slug: options.root ? '/' : projectFileName,
       })
     );
     host.write(
