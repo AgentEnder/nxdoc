@@ -11,6 +11,14 @@ on:
         options:
           - true
           - false
+      first_release:
+        description: 'If true, this is the first release'
+        type: choice
+        required: true
+        default: 'false'
+        options:
+          - true
+          - false
   workflow_call:
     inputs:
       docs_only:
@@ -57,7 +65,7 @@ jobs:
 
       - name: Build and release
         run: |
-          node ./node_modules/.bin/nx release --yes${{ github.event.inputs.first_release == 'true' ? ' --first-release' : '' }}
+          npx nx release --yes${{ github.event.inputs.first_release == 'true' && ' --first-release' || '' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}

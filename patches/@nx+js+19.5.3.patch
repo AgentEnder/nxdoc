@@ -1,3 +1,20 @@
+diff --git a/node_modules/@nx/js/src/executors/release-publish/release-publish.impl.js b/node_modules/@nx/js/src/executors/release-publish/release-publish.impl.js
+index b1e6cf3..3c143fd 100644
+--- a/node_modules/@nx/js/src/executors/release-publish/release-publish.impl.js
++++ b/node_modules/@nx/js/src/executors/release-publish/release-publish.impl.js
+@@ -233,8 +233,10 @@ async function runExecutor(options, context) {
+                 success: false,
+             };
+         }
+-        catch (err) {
+-            console.error('Something unexpected went wrong when processing the npm publish output\n', err);
++        catch (innerError) {
++            console.log('Something unexpected went wrong when processing the npm publish output\n', err, innerError);
++            console.log('err: ' + JSON.stringify(err, null, 2));
++            console.log('innerError: ' + JSON.stringify(innerError, null, 2));
+             return {
+                 success: false,
+             };
 diff --git a/node_modules/@nx/js/src/generators/release-version/release-version.js b/node_modules/@nx/js/src/generators/release-version/release-version.js
 index 91e07f6..6a9f70f 100644
 --- a/node_modules/@nx/js/src/generators/release-version/release-version.js
