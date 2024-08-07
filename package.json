@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AgentEnder/nxdoc"
+    "url": "git+https://github.com/AgentEnder/nxdoc"
   },
   "dependencies": {
     "@nx/devkit": "19.5.3",
