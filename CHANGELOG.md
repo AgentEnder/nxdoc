@@ -1,3 +1,14 @@
+## 0.2.4 (2024-08-07)
+
+
+### 🩹 Fixes
+
+- **nxdoc:** fixup frontmatter ([c7b6071](https://github.com/agentender/nxdoc/commit/c7b6071))
+
+### ❤️  Thank You
+
+- Craigory Coppola @AgentEnder
+
 ## 0.2.3 (2024-08-07)
 
 
