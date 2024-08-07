@@ -1,3 +1,14 @@
+## 0.2.1 (2024-08-07)
+
+
+### 🩹 Fixes
+
+- **nxdoc:** support documenting packages that supply builders and schematics ([2f1795a](https://github.com/agentender/nxdoc/commit/2f1795a))
+
+### ❤️  Thank You
+
+- Craigory Coppola @AgentEnder
+
 ## 0.2.0 (2024-08-07)
 
 
