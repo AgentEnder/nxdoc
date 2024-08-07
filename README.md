@@ -1,7 +1,7 @@
 > This package is unstable! Documentation formatting could change in the future. See something that you think should be different? [Open an issue](https://github.com/agentender/nxdoc/issues) on github and help shape this plugin.
 
 > [!NOTE]  
-> This plugin was formerly published as @nx-dotnet/nx-ghpages. It was moved due to not being relevant to .NET and to decouple the releases. To view previous versions and changelogs checkout the [nx-dotnet repo](https://github.com/nx-dotnet/nx-dotnet)
+> This plugin was formerly published as @nx-dotnet/nxdoc. It was moved due to not being relevant to .NET and to decouple the releases. To view previous versions and changelogs checkout the [nx-dotnet repo](https://github.com/nx-dotnet/nx-dotnet)
 
 ## Prerequisites
 
