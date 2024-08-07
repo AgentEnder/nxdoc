@@ -1,18 +1,27 @@
 {
   "name": "nxdoc",
   "$schema": "./node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/nxdoc/src",
+  "sourceRoot": "src",
   "projectType": "library",
   "tags": [],
   "targets": {
     "lint": {
-      "executor": "@nx/eslint:lint"
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "./src",
+          "{projectRoot}/package.json",
+          "./package.json",
+          "executors.json",
+          "generators.json"
+        ]
+      }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/packages/nxdoc"],
+      "outputs": ["{workspaceRoot}/coverage/nxdoc"],
       "options": {
-        "jestConfig": "packages/nxdoc/jest.config.ts"
+        "jestConfig": "jest.config.ts"
       }
     },
     "build": {
