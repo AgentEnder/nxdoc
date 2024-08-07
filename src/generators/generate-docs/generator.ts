@@ -75,7 +75,10 @@ export function getExecutorsToDocument(
     : ({} as ExecutorsJson);
 
   return Object.fromEntries(
-    Object.entries(executorsCollection.executors ?? {}).filter(
+    Object.entries({
+      ...executorsCollection.builders,
+      ...executorsCollection.executors,
+    }).filter(
       ([, config]) =>
         !(config as Required<GeneratorsJson>['generators'][string]).hidden
     )
@@ -87,12 +90,13 @@ export function getGeneratorsToDocument(
   project: Pick<ProjectConfiguration, 'name' | 'root'> & { generators?: string }
 ) {
   const generatorsCollection: GeneratorsJson = project.generators
-    ? readJson<GeneratorsJson>(host, `${project.root}/generators.json`)
+    ? readJson<GeneratorsJson>(host, project.generators)
     : ({} as GeneratorsJson);
   return Object.fromEntries(
-    Object.entries(generatorsCollection.generators ?? {}).filter(
-      ([, config]) => !config.hidden
-    )
+    Object.entries({
+      ...generatorsCollection.schematics,
+      ...generatorsCollection.generators,
+    }).filter(([, config]) => !config.hidden)
   );
 }
 
@@ -327,11 +331,16 @@ export function projectContainsGeneratorsOrExecutors(
     `${project.root}/package.json`
   );
 
-  const executors = packageJson.executors
-    ? joinPathFragments(project.root, packageJson.executors)
+  const executorsRelativePath = packageJson.executors ?? packageJson.builders;
+  const executors = executorsRelativePath
+    ? joinPathFragments(project.root, executorsRelativePath)
     : undefined;
-  const generators = packageJson.generators
-    ? joinPathFragments(project.root, packageJson.generators)
+
+  const generatorsRelativePath =
+    packageJson.generators ?? packageJson.schematics;
+
+  const generators = generatorsRelativePath
+    ? joinPathFragments(project.root, generatorsRelativePath)
     : undefined;
 
   if (!executors && !generators) {

@@ -70,18 +70,20 @@ export async function generateIndexGenerator(
             ...(packageDetail.generators > 0
               ? [
                   ul(
-                    `${plural(packageDetail.generators, 'Generator')} (${
-                      packageDetail.generators
-                    })`
+                    `${packageDetail.generators} ${plural(
+                      packageDetail.generators,
+                      'Generator'
+                    )}`
                   ),
                 ]
               : []),
             ...(packageDetail.executors > 0
               ? [
                   ul(
-                    `${plural(packageDetail.executors, 'Executor')} (${
-                      packageDetail.executors
-                    })`
+                    `${packageDetail.executors} ${plural(
+                      packageDetail.executors,
+                      'Executor'
+                    )}`
                   ),
                 ]
               : [])

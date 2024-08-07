@@ -53,7 +53,8 @@
       "conventionalCommits": true,
       "preVersionCommand": "nx run-many --target=build --exclude=\"docs-site\"",
       "generatorOptions": {
-        "packageRoot": "dist/{projectName}"
+        "packageRoot": "dist/{projectName}",
+        "skipLockFileUpdate": true
       }
     },
     "changelog": {
