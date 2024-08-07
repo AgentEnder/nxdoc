@@ -1,3 +1,14 @@
+## 0.2.3 (2024-08-07)
+
+
+### 🩹 Fixes
+
+- **nxdoc:** fixup category yml generation ([dbe4553](https://github.com/agentender/nxdoc/commit/dbe4553))
+
+### ❤️  Thank You
+
+- Craigory Coppola @AgentEnder
+
 ## 0.2.2 (2024-08-07)
 
 
