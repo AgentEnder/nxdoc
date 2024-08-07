@@ -155,7 +155,7 @@ function generateDocsForProject(
     );
     host.write(
       joinPathFragments(outputDirectory, '_category_.yml'),
-      `label: ${packageName}\n`
+      `label: '${packageName}'\n`
     );
   }
 
