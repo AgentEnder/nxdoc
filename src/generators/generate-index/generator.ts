@@ -1,16 +1,17 @@
 import {
   formatFiles,
-  generateFiles,
   getProjects,
   joinPathFragments,
   names,
   ProjectConfiguration,
+  ProjectGraphProjectNode,
   readJson,
   Tree,
 } from '@nx/devkit';
 import * as path from 'path';
 import { GenerateIndexGeneratorSchema } from './schema';
 import { PackageJson } from 'nx/src/utils/package-json';
+import { findMatchingProjects } from 'nx/src/utils/find-matching-projects';
 import {
   getExecutorsToDocument,
   getGeneratorsToDocument,
@@ -31,9 +32,20 @@ export async function generateIndexGenerator(
 ) {
   const packageDetails: PackageDetail[] = [];
 
-  const exclude = new Set(options.exclude?.split(',') ?? []);
+  const fauxGraphNodes = readGraphNodesFromProjectMap(getProjects(tree));
 
-  for (const [project, { generators, ...config }] of getProjects(tree)) {
+  const exclude = new Set(
+    options.exclude
+      ? findMatchingProjects(options.exclude.split(','), fauxGraphNodes)
+      : []
+  );
+
+  const projects = options.projects
+    ? findMatchingProjects(options.projects.split(','), fauxGraphNodes)
+    : Object.keys(fauxGraphNodes);
+
+  for (const project of projects) {
+    const { generators, ...config } = fauxGraphNodes[project].data;
     if (exclude.has(project)) {
       continue;
     }
@@ -86,6 +98,9 @@ function collectPackageDetails(
   tree: Tree,
   project: Omit<ProjectConfiguration, 'generators'>
 ): PackageDetail | null {
+  if (!tree.exists(path.join(project.root, 'package.json'))) {
+    return null;
+  }
   const packageJson = readJson<PackageJson>(
     tree,
     path.join(project.root, 'package.json')
@@ -118,6 +133,20 @@ function collectPackageDetails(
 
 function plural(count: number, singular: string, plural = `${singular}s`) {
   return count === 1 ? singular : plural;
+}
+
+function readGraphNodesFromProjectMap(
+  map: Map<string, ProjectConfiguration>
+): Record<string, ProjectGraphProjectNode> {
+  const projects: Record<string, ProjectGraphProjectNode> = {};
+  for (const [name, project] of map) {
+    projects[name] = {
+      name,
+      type: project.projectType === 'application' ? 'app' : 'lib',
+      data: project,
+    };
+  }
+  return projects;
 }
 
 export default generateIndexGenerator;

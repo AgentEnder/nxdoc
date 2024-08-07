@@ -8,6 +8,10 @@
       "description": "Where should the generated docs be placed?",
       "default": "docs"
     },
+    "projects": {
+      "type": "string",
+      "description": "Comma separated list of projects to include in the generated docs."
+    },
     "exclude": {
       "type": "string",
       "description": "Comma separated list of packages to exclude from the generated docs."
