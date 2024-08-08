@@ -6,8 +6,8 @@ import { CopyReadmeAndChangelogPlugin } from './src/plugins/copy-readme-changelo
 import { NxDocPlugin } from './src/plugins/nxdoc';
 
 const config: Config = {
-  title: 'Nx Github Pages',
-  tagline: 'Powerful, flexible benchmarking for JavaScript and beyond',
+  title: 'NxDoc',
+  tagline: 'Nx Plugin to document Nx Plugins',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here

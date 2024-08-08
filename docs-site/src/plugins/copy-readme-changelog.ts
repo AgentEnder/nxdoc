@@ -1,26 +1,14 @@
-import { LoadContext } from '@docusaurus/types';
 import { workspaceRoot } from '@nx/devkit';
+import { frontMatter, lines } from 'markdown-factory';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { stringify } from 'yaml';
 
-export async function CopyReadmeAndChangelogPlugin(context: LoadContext) {
-  const readme = readFileSync(join(workspaceRoot, './README.md'), 'utf-8');
+export async function CopyReadmeAndChangelogPlugin() {
   const changelog = readFileSync(
     join(workspaceRoot, './CHANGELOG.md'),
     'utf-8'
   );
 
-  writeFileSync(
-    join(__dirname, '../../docs/index.md'),
-    addFrontMatter(readme, {
-      id: 'index',
-      title: 'Home',
-      hide_title: true,
-      slug: '/',
-      sidebar_position: 1,
-    })
-  );
   writeFileSync(
     join(__dirname, '../../docs/changelog.md'),
     addFrontMatter(changelog, {
@@ -40,10 +28,7 @@ export async function CopyReadmeAndChangelogPlugin(context: LoadContext) {
 
 function addFrontMatter(
   contents: string,
-  frontMatter: Record<string, string | boolean | number>
+  frontMatterContents: Record<string, string | boolean | number>
 ) {
-  return `---
-${stringify(frontMatter).trim()}
----
-${contents}`;
+  return lines(frontMatter(frontMatterContents), contents);
 }

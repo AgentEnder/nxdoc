@@ -144,17 +144,21 @@ function generateDocsForProject(
   const indexMdLines = [];
 
   if (!options.skipFrontMatter) {
-    indexMdLines.push(
-      frontMatter({
-        title: packageName,
-        summary: packageName,
-      })
-    );
-    host.write(
-      joinPathFragments(outputDirectory, '_category_.yml'),
-      `label: '${packageName}'\n`
-    );
+    const frontMatterContents = {
+      title: 'Getting Started',
+      summary: 'Getting Started with ' + packageName,
+      sidebar_position: 0,
+    };
+    indexMdLines.push(frontMatter(frontMatterContents));
+    if (!options.root) {
+      host.write(
+        joinPathFragments(outputDirectory, '_category_.yml'),
+        `label: '${packageName}'\n`
+      );
+    }
   }
+
+  indexMdLines.push(h1('Getting Started'));
 
   if (gettingStartedFile) {
     indexMdLines.push(host.read(gettingStartedFile, 'utf-8'));
@@ -290,7 +294,7 @@ function getSchemaMarkdown(
       ...propertiesEntries.map(([name, property]) =>
         h3(
           schema.required?.includes?.(name)
-            ? `<span class="required">${name}</span>`
+            ? `<span className="required">${name}</span>`
             : name,
           property.oneOf
             ? ul(
@@ -306,7 +310,7 @@ function getSchemaMarkdown(
                   : `(${property.type})`
               ),
           ...(property.default
-            ? [`Default: \`${escapeHtml(JSON.stringify(property.default))}\``]
+            ? [`Default: \`${JSON.stringify(property.default)}\``]
             : [])
         )
       )

@@ -28,3 +28,21 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+.required {
+  position: relative;
+}
+
+.required::after {
+  content: '*';
+  color: red;
+  font-size: 1.5em;
+  position: absolute;
+  bottom: 0;
+  right: -0.5em;
+}
+
+.table-of-contents .required::after {
+  font-size: 1em;
+  position: static;
+}

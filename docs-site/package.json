@@ -5,6 +5,7 @@
   "scripts": {
     "build": "docusaurus build",
     "serve": "docusaurus start",
+    "serve-static": "docusaurus serve",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -55,6 +56,11 @@
       },
       "deploy": {
         "executor": "nx-github-pages:deploy",
+        "dependsOn": [
+          "build"
+        ]
+      },
+      "serve-static": {
         "dependsOn": [
           "build"
         ]
