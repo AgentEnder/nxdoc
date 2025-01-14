@@ -170,7 +170,7 @@ function generateDocsForProject(
     indexMdLines.push(
       h2('Generators'),
       ...generatorsEntries.map(([name, generator]) =>
-        h3(link(`./generators/${name}`, name), generator.description)
+        h3(link(`generators/${name}.md`, name), generator.description)
       )
     );
 
@@ -189,7 +189,7 @@ function generateDocsForProject(
       h2('Executors'),
       ...executorsEntries.map(([name, executor]) =>
         h3(
-          link(`./executors/${name}`, name),
+          link(`executors/${name}.md`, name),
           // For some reason, the executors json entry doesn't specify a description field.
           (executor as GeneratorsJsonEntry).description
         )
