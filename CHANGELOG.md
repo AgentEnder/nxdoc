@@ -1,3 +1,19 @@
+## 0.3.0 (2025-01-14)
+
+
+### 🚀 Features
+
+- **core:** sort required properties to top of schema documentation ([a70d10a](https://github.com/agentender/nxdoc/commit/a70d10a))
+
+### 🩹 Fixes
+
+- **misc:** update generator to relatively link generators from index ([359ff71](https://github.com/agentender/nxdoc/commit/359ff71))
+- **nxdoc:** fixup package index frontmatter ([93de9e5](https://github.com/agentender/nxdoc/commit/93de9e5))
+
+### ❤️  Thank You
+
+- Craigory Coppola @AgentEnder
+
 ## 0.2.4 (2024-08-07)
 
 
