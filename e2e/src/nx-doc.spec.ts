@@ -44,7 +44,7 @@ describe('nxdoc', () => {
 
     // add a new executor
     runCommand(
-      'npx nx g @nx/plugin:executor my-executor2 --directory libs/my-plugin/src/executors/my-executor2 --no-interactive',
+      'npx nx g @nx/plugin:executor libs/my-plugin/src/executors/my-executor2 --no-interactive',
       projectDirectory,
       {}
     );
@@ -205,13 +205,13 @@ function generatePlugin(projectDirectory: string, projectName: string) {
   );
 
   runCommand(
-    `npx nx g @nx/plugin:executor my-executor --directory libs/${projectName}/src/executors/my-executor --no-interactive`,
+    `npx nx g @nx/plugin:executor libs/${projectName}/src/executors/my-executor --no-interactive`,
     projectDirectory,
     {}
   );
 
   runCommand(
-    `npx nx g @nx/plugin:generator my-generator --directory libs/${projectName}/src/generators/my-generator --no-interactive`,
+    `npx nx g @nx/plugin:generator libs/${projectName}/src/generators/my-generator --no-interactive`,
     projectDirectory,
     {}
   );
